@@ -168,4 +168,55 @@ All colors MUST be HSL.
   .animate-pulse-slow {
     animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
+
+  /* N8N Chat Customization - Match Dashboard Theme */
+  :root {
+    --chat--color-primary: hsl(258 84% 68%);
+    --chat--color-primary-shade-50: hsl(258 84% 63%);
+    --chat--color-primary-shade-100: hsl(258 84% 58%);
+    --chat--color-secondary: hsl(262 83% 58%);
+    --chat--color-secondary-shade-50: hsl(262 83% 53%);
+    --chat--color-white: hsl(210 40% 98%);
+    --chat--color-light: hsl(220 13% 15%);
+    --chat--color-light-shade-50: hsl(220 13% 18%);
+    --chat--color-light-shade-100: hsl(220 13% 20%);
+    --chat--color-medium: hsl(220 13% 25%);
+    --chat--color-dark: hsl(220 13% 9%);
+    --chat--color-disabled: hsl(215 20.2% 65.1%);
+    --chat--color-typing: hsl(215 20.2% 65.1%);
+
+    --chat--spacing: 1rem;
+    --chat--border-radius: 0.75rem;
+    --chat--transition-duration: 0.3s;
+
+    --chat--window--width: 400px;
+    --chat--window--height: 600px;
+
+    --chat--header--background: hsl(220 13% 11%);
+    --chat--header--color: hsl(210 40% 98%);
+    --chat--header--border-bottom: 1px solid hsl(220 13% 20%);
+    --chat--heading--font-size: 1.5em;
+    --chat--subtitle--font-size: 0.9em;
+    --chat--subtitle--line-height: 1.6;
+
+    --chat--textarea--height: 50px;
+
+    --chat--message--font-size: 0.95rem;
+    --chat--message--padding: 1rem;
+    --chat--message--border-radius: 0.75rem;
+    --chat--message-line-height: 1.6;
+    --chat--message--bot--background: hsl(220 13% 15%);
+    --chat--message--bot--color: hsl(210 40% 98%);
+    --chat--message--bot--border: 1px solid hsl(220 13% 20%);
+    --chat--message--user--background: hsl(258 84% 68%);
+    --chat--message--user--color: hsl(210 40% 2%);
+    --chat--message--user--border: none;
+    --chat--message--pre--background: hsl(220 13% 20%);
+
+    --chat--toggle--background: hsl(258 84% 68%);
+    --chat--toggle--hover--background: hsl(258 84% 63%);
+    --chat--toggle--active--background: hsl(258 84% 58%);
+    --chat--toggle--color: hsl(210 40% 2%);
+    --chat--toggle--size: 64px;
+  }
 }
