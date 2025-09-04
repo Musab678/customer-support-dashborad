@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Dashboard Chatbot</title>
+    
+    <!-- N8N Chat CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    
+    <style>
+        /* Beautiful Chatbot Design System */
+        :root {
+            /* Dark theme base colors */
+            --background: 220 13% 9%;
+            --foreground: 210 40% 98%;
+            --card: 220 13% 11%;
+            --card-foreground: 210 40% 98%;
+            --popover: 220 13% 11%;
+            --popover-foreground: 210 40% 98%;
+
+            /* Modern purple-blue accent system */
+            --primary: 258 84% 68%;
+            --primary-foreground: 210 40% 2%;
+            --primary-glow: 258 90% 78%;
+
+            --secondary: 220 13% 15%;
+            --secondary-foreground: 210 40% 98%;
+
+            --muted: 220 13% 15%;
+            --muted-foreground: 215 20.2% 65.1%;
+
+            --accent: 262 83% 58%;
+            --accent-foreground: 210 40% 98%;
+
+            --destructive: 0 84% 60%;
+            --destructive-foreground: 210 40% 98%;
+
+            --success: 142 76% 36%;
+            --success-foreground: 210 40% 98%;
+
+            --warning: 48 96% 53%;
+            --warning-foreground: 220 13% 9%;
+
+            --border: 220 13% 20%;
+            --input: 220 13% 15%;
+            --ring: 258 84% 68%;
+
+            --radius: 0.75rem;
+
+            /* Custom dashboard tokens */
+            --gradient-primary: linear-gradient(135deg, hsl(258 84% 68%), hsl(262 83% 58%));
+            --gradient-secondary: linear-gradient(135deg, hsl(220 13% 15%), hsl(220 13% 18%));
+            --gradient-glow: linear-gradient(135deg, hsl(258 84% 68% / 0.1), hsl(262 83% 58% / 0.1));
+            
+            --shadow-glow: 0 0 20px hsl(258 84% 68% / 0.15);
+            --shadow-card: 0 4px 20px hsl(220 13% 5% / 0.4);
+            --shadow-elevated: 0 8px 40px hsl(220 13% 5% / 0.6);
+
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: hsl(var(--background));
+            color: hsl(var(--foreground));
+            background-image: radial-gradient(circle at 50% 0%, hsl(258 84% 68% / 0.08) 0%, transparent 50%);
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+        }
+
+        /* N8N Chat Customization - Beautiful Dashboard Theme */
+        :root {
+            --chat--color-primary: hsl(258 84% 68%);
+            --chat--color-primary-shade-50: hsl(258 84% 63%);
+            --chat--color-primary-shade-100: hsl(258 84% 58%);
+            --chat--color-secondary: hsl(262 83% 58%);
+            --chat--color-secondary-shade-50: hsl(262 83% 53%);
+            --chat--color-white: hsl(210 40% 98%);
+            --chat--color-light: hsl(220 13% 15%);
+            --chat--color-light-shade-50: hsl(220 13% 18%);
+            --chat--color-light-shade-100: hsl(220 13% 20%);
+            --chat--color-medium: hsl(220 13% 25%);
+            --chat--color-dark: hsl(220 13% 9%);
+            --chat--color-disabled: hsl(215 20.2% 65.1%);
+            --chat--color-typing: hsl(215 20.2% 65.1%);
+
+            --chat--spacing: 1.25rem;
+            --chat--border-radius: 1rem;
+            --chat--transition-duration: 0.4s;
+
+            --chat--window--width: 420px;
+            --chat--window--height: 650px;
+
+            --chat--header--background: linear-gradient(135deg, hsl(220 13% 11%), hsl(220 13% 13%));
+            --chat--header--color: hsl(210 40% 98%);
+            --chat--header--border-bottom: 1px solid hsl(220 13% 20%);
+            --chat--heading--font-size: 1.5em;
+            --chat--subtitle--font-size: 0.9em;
+            --chat--subtitle--line-height: 1.6;
+
+            --chat--textarea--height: 60px;
+
+            --chat--message--font-size: 0.95rem;
+            --chat--message--padding: 1.25rem;
+            --chat--message--border-radius: 1rem;
+            --chat--message-line-height: 1.6;
+            --chat--message--bot--background: linear-gradient(135deg, hsl(220 13% 15%), hsl(220 13% 17%));
+            --chat--message--bot--color: hsl(210 40% 98%);
+            --chat--message--bot--border: 1px solid hsl(220 13% 20%);
+            --chat--message--user--background: linear-gradient(135deg, hsl(258 84% 68%), hsl(262 83% 58%));
+            --chat--message--user--color: hsl(210 40% 2%);
+            --chat--message--user--border: none;
+            --chat--message--pre--background: hsl(220 13% 20%);
+
+            --chat--toggle--background: linear-gradient(135deg, hsl(258 84% 68%), hsl(262 83% 58%));
+            --chat--toggle--hover--background: linear-gradient(135deg, hsl(258 84% 63%), hsl(262 83% 53%));
+            --chat--toggle--active--background: linear-gradient(135deg, hsl(258 84% 58%), hsl(262 83% 48%));
+            --chat--toggle--color: hsl(210 40% 2%);
+            --chat--toggle--size: 72px;
+        }
+
+        /* Enhanced Chat Styling */
+        [data-chat] {
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        }
+
+        [data-chat] .chat-window {
+            backdrop-filter: blur(16px) saturate(180%);
+            background: hsl(220 13% 11% / 0.95) !important;
+            border: 1px solid hsl(220 13% 20% / 0.8) !important;
+            box-shadow: 
+                0 20px 25px -5px hsl(220 13% 5% / 0.6),
+                0 10px 10px -5px hsl(220 13% 5% / 0.4),
+                0 0 0 1px hsl(258 84% 68% / 0.1) !important;
+            animation: chat-window-enter 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        [data-chat] .chat-header {
+            background: var(--chat--header--background) !important;
+            border-bottom: 1px solid hsl(220 13% 20% / 0.8) !important;
+            backdrop-filter: blur(8px);
+        }
+
+        [data-chat] .chat-header h1 {
+            background: linear-gradient(135deg, hsl(258 84% 68%), hsl(262 83% 58%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        [data-chat] .chat-message {
+            animation: message-slide-in 0.4s ease-out;
+            transition: all var(--chat--transition-duration) ease;
+        }
+
+        [data-chat] .chat-message:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px hsl(220 13% 5% / 0.3);
+        }
+
+        [data-chat] .chat-message.user {
+            background: var(--chat--message--user--background) !important;
+            box-shadow: 
+                0 4px 12px hsl(258 84% 68% / 0.2),
+                0 0 0 1px hsl(258 84% 68% / 0.1);
+        }
+
+        [data-chat] .chat-message.bot {
+            background: var(--chat--message--bot--background) !important;
+            border: 1px solid hsl(220 13% 20% / 0.6) !important;
+            box-shadow: 0 2px 8px hsl(220 13% 5% / 0.3);
+        }
+
+        [data-chat] .chat-input-container {
+            background: linear-gradient(135deg, hsl(220 13% 13%), hsl(220 13% 15%)) !important;
+            border-top: 1px solid hsl(220 13% 20% / 0.8) !important;
+            backdrop-filter: blur(8px);
+        }
+
+        [data-chat] .chat-input {
+            background: hsl(220 13% 15%) !important;
+            border: 1px solid hsl(220 13% 20%) !important;
+            color: hsl(210 40% 98%) !important;
+            border-radius: 0.75rem !important;
+            transition: all var(--chat--transition-duration) ease !important;
+        }
+
+        [data-chat] .chat-input:focus {
+            border-color: hsl(258 84% 68%) !important;
+            box-shadow: 
+                0 0 0 3px hsl(258 84% 68% / 0.1),
+                0 2px 8px hsl(258 84% 68% / 0.2) !important;
+            outline: none !important;
+        }
+
+        [data-chat] .chat-send-button {
+            background: linear-gradient(135deg, hsl(258 84% 68%), hsl(262 83% 58%)) !important;
+            border: none !important;
+            border-radius: 0.75rem !important;
+            transition: all var(--chat--transition-duration) ease !important;
+            box-shadow: 0 2px 8px hsl(258 84% 68% / 0.3);
+        }
+
+        [data-chat] .chat-send-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px hsl(258 84% 68% / 0.4);
+        }
+
+        [data-chat] .chat-toggle {
+            background: var(--chat--toggle--background) !important;
+            border: none !important;
+            box-shadow: 
+                0 8px 32px hsl(258 84% 68% / 0.3),
+                0 4px 16px hsl(258 84% 68% / 0.2),
+                0 0 0 1px hsl(258 84% 68% / 0.1) !important;
+            transition: all var(--chat--transition-duration) cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+            animation: chat-toggle-pulse 3s ease-in-out infinite;
+        }
+
+        [data-chat] .chat-toggle:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 
+                0 12px 40px hsl(258 84% 68% / 0.4),
+                0 6px 20px hsl(258 84% 68% / 0.3),
+                0 0 0 1px hsl(258 84% 68% / 0.2) !important;
+        }
+
+        [data-chat] .chat-toggle:active {
+            transform: scale(0.98);
+        }
+
+        /* Animations */
+        @keyframes chat-window-enter {
+            0% {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.02) translateY(-5px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes message-slide-in {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px) translateY(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) translateY(0);
+            }
+        }
+
+        @keyframes chat-toggle-pulse {
+            0%, 100% {
+                box-shadow: 
+                    0 8px 32px hsl(258 84% 68% / 0.3),
+                    0 4px 16px hsl(258 84% 68% / 0.2),
+                    0 0 0 1px hsl(258 84% 68% / 0.1);
+            }
+            50% {
+                box-shadow: 
+                    0 8px 32px hsl(258 84% 68% / 0.4),
+                    0 4px 16px hsl(258 84% 68% / 0.3),
+                    0 0 0 1px hsl(258 84% 68% / 0.2),
+                    0 0 20px hsl(258 84% 68% / 0.2);
+            }
+        }
+
+        /* Scrollbar styling for chat */
+        [data-chat] ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        [data-chat] ::-webkit-scrollbar-track {
+            background: hsl(220 13% 13%);
+            border-radius: 3px;
+        }
+
+        [data-chat] ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, hsl(258 84% 68%), hsl(262 83% 58%));
+            border-radius: 3px;
+        }
+
+        [data-chat] ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, hsl(258 84% 63%), hsl(262 83% 53%));
+        }
+
+        /* Custom scrollbar for body */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: hsl(var(--muted));
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: hsl(var(--border));
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: hsl(var(--accent));
+        }
+    </style>
+</head>
+<body>
+    <!-- The chatbot will be injected here -->
+    <div id="n8n-chat"></div>
+
+    <!-- N8N Chat JavaScript -->
+    <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+        createChat({
+            webhookUrl: 'https://musab-workflow.app.n8n.cloud/webhook/b8351c28-27bd-4644-9c1e-c411d6433786/chat',
+            initialMessages: [
+                'Hi there! 👋',
+                'How can I help you with your business dashboard today?'
+            ],
+            showWelcomeScreen: true,
+            i18n: {
+                en: {
+                    title: 'Dashboard Assistant 💼',
+                    subtitle: "Ask me anything about your business metrics!",
+                    footer: '',
+                    getStarted: 'Start Chat',
+                    inputPlaceholder: 'Ask about your dashboard...',
+                    closeButtonTooltip: 'Close chat',
+                },
+            },
+        });
+    </script>
+</body>
+</html>
